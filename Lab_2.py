@@ -34,7 +34,7 @@ weight = dataCar[coordinates1[4]].tolist()
 
 w_all = one_dim_lr(dataEx)
 
-# Creating and plotting the graph
+"""# Creating and plotting the graph
 plt.scatter(rowEx, colEx, marker = "x")
 x_vals = np. linspace(min(rowEx), max(rowEx), 100)
 
@@ -44,7 +44,7 @@ plt.plot(x_vals, y_vals, color="red")
 plt.legend()
 plt.xlabel("Standards and Poor's 500 return index")
 plt.ylabel("MSCI Europe index")
-plt.show()
+plt.show()"""
 
 ###############################################################################################################
 # 1-D Linear regression without interception with 10% of the data from turkish-se-SP500vsMSCI.csv
@@ -56,7 +56,7 @@ for i in range(5):
     w0.append(one_dim_lr(datasetEx))
     #print(w0, "\n")
 
-# Creating and plotting the graph
+"""# Creating and plotting the graph
 plt.scatter(rowEx, colEx, marker = "x")
 x_vals = np. linspace(min(rowEx), max(rowEx), 100)
 
@@ -67,14 +67,14 @@ for i, coeff in enumerate(w0):
 plt.legend()
 plt.xlabel("Standards and Poor's 500 return index")
 plt.ylabel("MSCI Europe index")
-plt.show()
+plt.show()"""
 
 ###############################################################################################################
 # 1-D Linear regression with interception using mpg and weight from mtcarsdata-4features.csv
 
 w0Car, w1Car = one_dim_lr_off(pd.DataFrame({'x': weight, 'y': mpg}))
 
-# Creating and plotting the graph
+"""# Creating and plotting the graph
 plt.scatter(weight, mpg, marker='x') 
 x_vals = np.linspace(min(weight), max(weight), 100)
 y_vals = w0Car + (w1Car * x_vals)  
@@ -82,7 +82,7 @@ y_vals = w0Car + (w1Car * x_vals)
 plt.plot(x_vals, y_vals, color = "Red")
 plt.xlabel("Car weight (lbs/1000)")
 plt.ylabel("mpg")
-plt.show()
+plt.show()"""
 
 ###############################################################################################################
 # Multi-dim Linear regression with interception using all data from mtcarsdata-4features.csv
@@ -93,7 +93,7 @@ w, predictions = multi_dim_lr(dataMulti)
 error = [mpg[i] - predictions[i] for i in range(len(mpg))]
 comparison = np.column_stack((mpg, predictions,error))
 np.set_printoptions(precision=3, suppress=True)
-print(comparison)
+"""print(comparison)"""
 
 
 ############################################################################################################### TASK 3
@@ -119,9 +119,9 @@ for i in range(rep):
 
     ###################### Dividing training set and test set for both the files
     # training_set
-    trainingSetIndicesEx = np.random.permutation(len(rowEx))[:round(len(rowEx)*0.05)]
+    trainingSetIndicesEx = np.random.permutation(len(rowEx))[:round(len(rowEx)*0.15)]
     trainingSetEx = dataEx.iloc[trainingSetIndicesEx]
-    trainingSetIndicesCar = np.random.permutation(len(mpg))[:round(len(mpg)*0.05)]
+    trainingSetIndicesCar = np.random.permutation(len(mpg))[:round(len(mpg)*0.15)]
     trainingSetCar = dataCar.iloc[trainingSetIndicesCar]
 
     # test_set
@@ -178,7 +178,7 @@ for i in range(rep):
 
     msetest1.append(objTest1/len(testSetRowEx))
     
-    ###################### Computing the MSE for car data without interception
+    ###################### Computing the MSE for mpg and weight with interception
     w0TrainCar, w1TrainCar = one_dim_lr_off(pd.DataFrame({'x': trainingSetWeight, 'y': trainingSetMpg}))
 
     # training_set car    
