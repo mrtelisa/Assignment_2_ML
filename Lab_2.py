@@ -34,17 +34,16 @@ weight = dataCar[coordinates1[4]].tolist()
 
 w_all = one_dim_lr(dataEx)
 
-"""# Creating and plotting the graph
+# Creating and plotting the graph
 plt.scatter(rowEx, colEx, marker = "x")
 x_vals = np. linspace(min(rowEx), max(rowEx), 100)
 
 y_vals = w_all * x_vals
 plt.plot(x_vals, y_vals, color="red")
 
-plt.legend()
 plt.xlabel("Standards and Poor's 500 return index")
 plt.ylabel("MSCI Europe index")
-plt.show()"""
+plt.show()
 
 ###############################################################################################################
 # 1-D Linear regression without interception with 10% of the data from turkish-se-SP500vsMSCI.csv
@@ -56,7 +55,7 @@ for i in range(5):
     w0.append(one_dim_lr(datasetEx))
     #print(w0, "\n")
 
-"""# Creating and plotting the graph
+# Creating and plotting the graph
 plt.scatter(rowEx, colEx, marker = "x")
 x_vals = np. linspace(min(rowEx), max(rowEx), 100)
 
@@ -67,14 +66,14 @@ for i, coeff in enumerate(w0):
 plt.legend()
 plt.xlabel("Standards and Poor's 500 return index")
 plt.ylabel("MSCI Europe index")
-plt.show()"""
+plt.show()
 
 ###############################################################################################################
 # 1-D Linear regression with interception using mpg and weight from mtcarsdata-4features.csv
 
 w0Car, w1Car = one_dim_lr_off(pd.DataFrame({'x': weight, 'y': mpg}))
 
-"""# Creating and plotting the graph
+# Creating and plotting the graph
 plt.scatter(weight, mpg, marker='x') 
 x_vals = np.linspace(min(weight), max(weight), 100)
 y_vals = w0Car + (w1Car * x_vals)  
@@ -82,7 +81,7 @@ y_vals = w0Car + (w1Car * x_vals)
 plt.plot(x_vals, y_vals, color = "Red")
 plt.xlabel("Car weight (lbs/1000)")
 plt.ylabel("mpg")
-plt.show()"""
+plt.show()
 
 ###############################################################################################################
 # Multi-dim Linear regression with interception using all data from mtcarsdata-4features.csv
@@ -93,7 +92,7 @@ w, predictions = multi_dim_lr(dataMulti)
 error = [mpg[i] - predictions[i] for i in range(len(mpg))]
 comparison = np.column_stack((mpg, predictions,error))
 np.set_printoptions(precision=3, suppress=True)
-"""print(comparison)"""
+print("\n\nComparison between actual mpg, mpg prediction and value of the error:\n", comparison)
 
 
 ############################################################################################################### TASK 3
@@ -228,4 +227,4 @@ comparison_df["MSE Test 3"] = comparison_df["MSE Test 3"].round(3)
 comparison_df["MSE Train 4"] = comparison_df["MSE Train 4"].round(3)
 comparison_df["MSE Test 4"] = comparison_df["MSE Test 4"].round(3)
 
-print(comparison_df.to_string(index=False))
+print("\n\n", comparison_df.to_string(index=False))
