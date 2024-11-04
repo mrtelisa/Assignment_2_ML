@@ -118,9 +118,9 @@ for i in range(rep):
 
     ###################### Dividing training set and test set for both the files
     # training_set
-    trainingSetIndicesEx = np.random.permutation(len(rowEx))[:round(len(rowEx)*0.15)]
+    trainingSetIndicesEx = np.random.permutation(len(rowEx))[:round(len(rowEx)*0.05)]
     trainingSetEx = dataEx.iloc[trainingSetIndicesEx]
-    trainingSetIndicesCar = np.random.permutation(len(mpg))[:round(len(mpg)*0.15)]
+    trainingSetIndicesCar = np.random.permutation(len(mpg))[:round(len(mpg)*0.05)]
     trainingSetCar = dataCar.iloc[trainingSetIndicesCar]
 
     # test_set
